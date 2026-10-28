@@ -1,112 +1,814 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"> 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Biodata Mahasantri</title>
+  <!-- Bootstrap 4.6 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <!-- Font Awesome 4.7 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Variables: Monochrome Theme Definitions (Hitam, Abu-abu, Putih) */
+    :root[data-theme="dark"] {
+      --bg-body: #090a0c;
+      --bg-ambient-1: rgba(255, 255, 255, 0.04);
+      --bg-ambient-2: rgba(255, 255, 255, 0.02);
+      --grid-line: rgba(255, 255, 255, 0.025);
+      --card-bg: rgba(18, 20, 24, 0.94);
+      --card-border: rgba(255, 255, 255, 0.09);
+      --card-shadow: 0 24px 60px -12px rgba(0, 0, 0, 0.85);
+      --text-title: #ffffff;
+      --text-sub: #9ca3af;
+      --text-label: #e5e7eb;
+      --input-bg: #111317;
+      --input-border: #272a30;
+      --input-text: #f9fafb;
+      --input-placeholder: #6b7280;
+      --input-icon: #9ca3af;
+      --accent-active: #ffffff;
+      --accent-active-bg: rgba(255, 255, 255, 0.07);
+      --card-selectable-bg: #111317;
+      --card-selectable-border: #272a30;
+      --card-selectable-text: #f3f4f6;
+      --progress-bg: #1b1e24;
+      --progress-fill: linear-gradient(90deg, #52525b, #e4e4e7);
+      --chip-bg: #111317;
+      --chip-border: #272a30;
+      --chip-text: #9ca3af;
+      --chip-active-bg: #ffffff;
+      --chip-active-text: #090a0c;
+      --btn-primary-bg: #ffffff;
+      --btn-primary-text: #090a0c;
+      --btn-reset-bg: #16181d;
+      --btn-reset-border: #2e323b;
+      --btn-reset-text: #d1d5db;
+      --theme-btn-bg: rgba(255, 255, 255, 0.06);
+      --theme-btn-border: rgba(255, 255, 255, 0.12);
+      --theme-btn-text: #f9fafb;
+      --toast-bg: #18181b;
+      --toast-border: #3f3f46;
+      --badge-bg: rgba(255, 255, 255, 0.08);
+      --badge-border: rgba(255, 255, 255, 0.16);
+      --badge-text: #f3f4f6;
+    }
+
+    :root[data-theme="light"] {
+      --bg-body: #f4f4f5;
+      --bg-ambient-1: rgba(0, 0, 0, 0.03);
+      --bg-ambient-2: rgba(0, 0, 0, 0.02);
+      --grid-line: rgba(0, 0, 0, 0.035);
+      --card-bg: #ffffff;
+      --card-border: #e4e4e7;
+      --card-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.08);
+      --text-title: #09090b;
+      --text-sub: #71717a;
+      --text-label: #27272a;
+      --input-bg: #fafafa;
+      --input-border: #d4d4d8;
+      --input-text: #09090b;
+      --input-placeholder: #a1a1aa;
+      --input-icon: #71717a;
+      --accent-active: #09090b;
+      --accent-active-bg: rgba(9, 9, 11, 0.04);
+      --card-selectable-bg: #fafafa;
+      --card-selectable-border: #e4e4e7;
+      --card-selectable-text: #18181b;
+      --progress-bg: #e4e4e7;
+      --progress-fill: linear-gradient(90deg, #71717a, #09090b);
+      --chip-bg: #f4f4f5;
+      --chip-border: #d4d4d8;
+      --chip-text: #52525b;
+      --chip-active-bg: #09090b;
+      --chip-active-text: #ffffff;
+      --btn-primary-bg: #09090b;
+      --btn-primary-text: #ffffff;
+      --btn-reset-bg: #f4f4f5;
+      --btn-reset-border: #d4d4d8;
+      --btn-reset-text: #52525b;
+      --theme-btn-bg: #ffffff;
+      --theme-btn-border: #d4d4d8;
+      --theme-btn-text: #09090b;
+      --toast-bg: #09090b;
+      --toast-border: #27272a;
+      --badge-bg: #e4e4e7;
+      --badge-border: #d4d4d8;
+      --badge-text: #18181b;
+    }
+
+    * {
+      box-sizing: border-box;
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      background-image: 
+        radial-gradient(circle at 10% 15%, var(--bg-ambient-1), transparent 45%),
+        radial-gradient(circle at 90% 85%, var(--bg-ambient-2), transparent 45%);
+      font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      color: var(--text-label);
+      min-height: 100vh;
+      padding: 36px 15px 50px;
+      position: relative;
+    }
+
+    /* Ambient Subtle Grid */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                        linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .form-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Top Navigation with Theme Toggle */
+    .portal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: var(--badge-bg);
+      border: 1px solid var(--badge-border);
+      color: var(--badge-text);
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    /* Animated Theme Switcher Button */
+    .btn-theme-toggle {
+      background: var(--theme-btn-bg);
+      border: 1.5px solid var(--theme-btn-border);
+      color: var(--theme-btn-text);
+      padding: 8px 16px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      outline: none !important;
+    }
+
+    .btn-theme-toggle:hover {
+      transform: translateY(-1px);
+      opacity: 0.9;
+    }
+
+    .theme-icon {
+      font-size: 1rem;
+      color: inherit;
+    }
+
+    /* Primary Form Card */
+    .form-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      box-shadow: var(--card-shadow);
+      padding: 38px 44px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #71717a, #ffffff, #52525b);
+    }
+
+    .form-header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .form-header h2 {
+      color: var(--text-title);
+      font-weight: 800;
+      font-size: 1.85rem;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .form-header p {
+      color: var(--text-sub);
+      font-size: 0.94rem;
+      margin-bottom: 0;
+    }
+
+    /* Progress Completion Tracker */
+    .progress-box {
+      background: var(--progress-bg);
+      border-radius: 12px;
+      padding: 12px 18px;
+      margin-bottom: 28px;
+      border: 1px solid var(--card-border);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+    }
+
+    .progress-title {
+      color: var(--text-sub);
+    }
+
+    .progress-percentage {
+      color: var(--text-title);
+    }
+
+    .progress-track {
+      height: 6px;
+      background: rgba(120, 120, 120, 0.18);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--progress-fill);
+      border-radius: 99px;
+      transition: width 0.3s ease;
+    }
+
+    /* Field Titles & Inputs */
+    .field-title {
+      font-size: 0.83rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-label);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .req-indicator {
+      color: var(--text-sub);
+      font-weight: 600;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--input-icon);
+      font-size: 1.05rem;
+      pointer-events: none;
+      transition: color 0.2s ease;
+    }
+
+    .form-control-custom {
+      background-color: var(--input-bg);
+      border: 1.5px solid var(--input-border);
+      color: var(--input-text) !important;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 0.93rem;
+      font-weight: 500;
+      padding-left: 44px;
+      transition: all 0.2s ease;
+    }
+
+    .form-control-custom::placeholder {
+      color: var(--input-placeholder);
+    }
+
+    .form-control-custom:focus {
+      background-color: var(--input-bg);
+      border-color: var(--accent-active);
+      box-shadow: 0 0 0 3px rgba(120, 120, 120, 0.2);
+      outline: none;
+    }
+
+    .input-wrapper:focus-within .input-icon {
+      color: var(--text-title);
+    }
+
+    /* Select Dropdown */
+    .custom-select-styled {
+      background-color: var(--input-bg);
+      border: 1.5px solid var(--input-border);
+      color: var(--input-text);
+      height: 48px;
+      border-radius: 12px;
+      padding-left: 44px;
+      font-size: 0.93rem;
+      font-weight: 500;
+    }
+
+    .custom-select-styled:focus {
+      border-color: var(--accent-active);
+      box-shadow: 0 0 0 3px rgba(120, 120, 120, 0.2);
+      outline: none;
+    }
+
+    /* Interactive Radio Cards for Jurusan */
+    .radio-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .radio-card {
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .radio-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .radio-card-body {
+      background: var(--card-selectable-bg);
+      border: 1.5px solid var(--card-selectable-border);
+      border-radius: 14px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .radio-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--progress-bg);
+      color: var(--text-title);
+      border: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      transition: all 0.25s ease;
+      flex-shrink: 0;
+    }
+
+    .radio-card input[type="radio"]:checked + .radio-card-body {
+      border-color: var(--accent-active);
+      background: var(--accent-active-bg);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .radio-card input[type="radio"]:checked + .radio-card-body .radio-card-icon {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      border-color: var(--btn-primary-bg);
+    }
+
+    .radio-title {
+      font-weight: 700;
+      font-size: 0.94rem;
+      color: var(--text-title);
+      margin-bottom: 2px;
+      display: block;
+    }
+
+    .radio-desc {
+      font-size: 0.78rem;
+      color: var(--text-sub);
+      display: block;
+    }
+
+    /* Multi-Select Chips for Hobi */
+    .chips-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chip-item {
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
+    .chip-item input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .chip-pill {
+      background: var(--chip-bg);
+      border: 1.5px solid var(--chip-border);
+      color: var(--chip-text);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .chip-item input[type="checkbox"]:checked + .chip-pill {
+      background: var(--chip-active-bg);
+      border-color: var(--chip-active-bg);
+      color: var(--chip-active-text);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Textarea */
+    .textarea-custom {
+      height: auto;
+      padding: 14px;
+      border-radius: 12px;
+      resize: vertical;
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+
+    /* Buttons */
+    .btn-glow {
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text) !important;
+      border: 1.5px solid var(--btn-primary-bg);
+      font-weight: 700;
+      font-size: 0.98rem;
+      border-radius: 12px;
+      padding: 13px 30px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .btn-glow:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-reset-clean {
+      background: var(--btn-reset-bg);
+      border: 1.5px solid var(--btn-reset-border);
+      color: var(--btn-reset-text);
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 13px 24px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-reset-clean:hover {
+      opacity: 0.8;
+      color: var(--text-title);
+    }
+
+    /* Floating Toast */
+    .toast-popup {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--toast-bg);
+      border: 1px solid var(--toast-border);
+      color: #ffffff;
+      padding: 16px 22px;
+      border-radius: 14px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
+      display: none;
+      align-items: center;
+      gap: 14px;
+      z-index: 9999;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .form-card {
+        padding: 26px 20px;
+      }
+      .radio-card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
-    
 
-<form>
-    <h1 align="center" style="margin: top 3px; ;">FORM BIODATA MAHASANTRI</h1>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label for="text" class="col-2 col-form-label" >Nama</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="fa fa-address-book"></i>
+<div class="form-wrapper">
+  
+  <!-- Navigation bar with Theme Switcher -->
+  <div class="portal-nav">
+    <div class="brand-badge">
+      <i class="fa fa-graduation-cap"></i> SISTEM AKADEMIK
+    </div>
+    <button type="button" class="btn-theme-toggle" id="themeToggleBtn" aria-label="Ganti Tema">
+      <i class="fa fa-moon-o theme-icon" id="themeIcon"></i>
+      <span id="themeText">Tema Gelap</span>
+    </button>
+  </div>
+
+  <!-- Primary Centered Card -->
+  <div class="form-card">
+    <div class="form-header">
+      <h2>FORM BIODATA MAHASANTRI</h2>
+      <p>Lengkapi formulir registrasi data diri dengan akurat dan lengkap</p>
+    </div>
+
+    <!-- Real-time Progress Bar -->
+    <div class="progress-box">
+      <div class="progress-header">
+        <span class="progress-title"><i class="fa fa-tasks mr-1"></i> Kelengkapan Formulir</span>
+        <span class="progress-percentage font-weight-bold" id="progressPct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressBar"></div>
+      </div>
+    </div>
+
+    <form id="biodataForm" novalidate>
+
+      <!-- Input: Nama Lengkap -->
+      <div class="form-group mb-4">
+        <label for="nama" class="field-title">
+          <span>Nama Lengkap</span>
+          <span class="req-indicator small">*Wajib</span>
+        </label>
+        <div class="input-wrapper">
+          <i class="fa fa-address-book input-icon"></i>
+          <input type="text" id="nama" name="nama" class="form-control form-control-custom track-input" placeholder="Masukkan nama lengkap santri" required>
+        </div>
+      </div>
+
+      <!-- Input Grid: NIM & Email -->
+      <div class="form-row mb-2">
+        <div class="col-md-6 form-group mb-4">
+          <label for="nim" class="field-title">
+            <span>NIM (Nomor Induk)</span>
+            <span class="req-indicator small">*Wajib</span>
+          </label>
+          <div class="input-wrapper">
+            <i class="fa fa-address-card input-icon"></i>
+            <input type="text" id="nim" name="nim" class="form-control form-control-custom track-input" placeholder="Contoh: 20261099" required>
           </div>
-        </div> 
-        <input id="text" name="text" type="text" class="form-control">
-      </div>
-    </div>
-  </div>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label for="text1" class="col-2 col-form-label" >NIM</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="fa fa-address-card"></i>
+        </div>
+
+        <div class="col-md-6 form-group mb-4">
+          <label for="email" class="field-title">
+            <span>Alamat Email</span>
+            <span class="req-indicator small">*Wajib</span>
+          </label>
+          <div class="input-wrapper">
+            <i class="fa fa-envelope-o input-icon"></i>
+            <input type="email" id="email" name="email" class="form-control form-control-custom track-input" placeholder="nama@pesantren.ac.id" required>
           </div>
-        </div> 
-        <input id="text1" name="text1" type="text" class="form-control">
+        </div>
       </div>
-    </div>
+
+      <!-- Input: Pilihan Jurusan -->
+      <div class="form-group mb-4">
+        <label class="field-title">
+          <span>Jurusan / Program Studi</span>
+          <span class="req-indicator small">*Wajib</span>
+        </label>
+        <div class="radio-card-grid">
+          <label class="radio-card">
+            <input type="radio" name="jurusan" class="track-input" value="Software Development">
+            <div class="radio-card-body">
+              <div class="radio-card-icon"><i class="fa fa-code"></i></div>
+              <div>
+                <span class="radio-title">Software Development</span>
+                <span class="radio-desc">Web, Mobile & Database System</span>
+              </div>
+            </div>
+          </label>
+
+          <label class="radio-card">
+            <input type="radio" name="jurusan" class="track-input" value="Digital Marketing">
+            <div class="radio-card-body">
+              <div class="radio-card-icon"><i class="fa fa-line-chart"></i></div>
+              <div>
+                <span class="radio-title">Digital Marketing</span>
+                <span class="radio-desc">SEO, Ads & Business Growth</span>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <!-- Input: Pilihan Hobi -->
+      <div class="form-group mb-4">
+        <label class="field-title">
+          <span>Minat & Hobi</span>
+          <span class="text-muted small">Pilih yang sesuai</span>
+        </label>
+        <div class="chips-group">
+          <label class="chip-item">
+            <input type="checkbox" name="hobi" value="Mancing">
+            <span class="chip-pill"><i class="fa fa-anchor"></i> Mancing</span>
+          </label>
+          <label class="chip-item">
+            <input type="checkbox" name="hobi" value="Olahraga">
+            <span class="chip-pill"><i class="fa fa-futbol-o"></i> Olahraga</span>
+          </label>
+          <label class="chip-item">
+            <input type="checkbox" name="hobi" value="Membaca">
+            <span class="chip-pill"><i class="fa fa-book"></i> Membaca</span>
+          </label>
+          <label class="chip-item">
+            <input type="checkbox" name="hobi" value="Menonton">
+            <span class="chip-pill"><i class="fa fa-film"></i> Menonton</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Input: Mata Kuliah -->
+      <div class="form-group mb-4">
+        <label for="matakuliah" class="field-title">
+          <span>Mata Kuliah Peminatan</span>
+          <span class="req-indicator small">*Wajib</span>
+        </label>
+        <div class="input-wrapper">
+          <i class="fa fa-graduation-cap input-icon"></i>
+          <select id="matakuliah" name="matakuliah" class="custom-select custom-select-styled track-input">
+            <option value="" disabled selected>-- Pilih Mata Kuliah Peminatan --</option>
+            <option value="Web Design">Web Design (Frontend & UI/UX)</option>
+            <option value="Database SQL">Database SQL & Data Modeling</option>
+            <option value="Pemrograman PHP">Pemrograman PHP (Backend & Laravel)</option>
+            <option value="Pemrograman Python">Pemrograman Python (Automation & AI)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Input: Alamat Lengkap -->
+      <div class="form-group mb-4">
+        <label for="alamat" class="field-title">
+          <span>Alamat Lengkap</span>
+          <span class="text-muted small" id="charCounter">0/200</span>
+        </label>
+        <textarea id="alamat" name="alamat" rows="3" maxlength="200" class="form-control form-control-custom textarea-custom track-input" style="padding-left: 15px;" placeholder="Tuliskan alamat asal / domisili lengkap..."></textarea>
+      </div>
+
+      <!-- Actions -->
+      <div class="d-flex align-items-center justify-content-between flex-wrap pt-3" style="gap: 14px;">
+        <button type="submit" class="btn btn-glow">
+          <i class="fa fa-paper-plane"></i> Kirim Biodata
+        </button>
+        <button type="reset" id="resetBtn" class="btn btn-reset-clean">
+          <i class="fa fa-refresh mr-1"></i> Bersihkan Form
+        </button>
+      </div>
+
+    </form>
   </div>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label for="text2" class="col-2 col-form-label">Email</label> 
-    <div class="col-8">
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-            <i class="fa fa-envelope-o"></i>
-          </div>
-        </div> 
-        <input id="text2" name="text2" type="text" class="form-control">
-      </div>
-    </div>
+</div>
+
+<!-- Floating Toast Confirmation -->
+<div id="toastNotification" class="toast-popup">
+  <i class="fa fa-check-circle fa-2x text-light"></i>
+  <div>
+    <h6 class="mb-0 font-weight-bold">Formulir Terkirim!</h6>
+    <small id="toastDesc">Data biodata mahasantri berhasil disimpan.</small>
   </div>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label class="col-2">Jurusan</label> 
-    <div class="col-8">
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="radio" id="radio_0" type="radio" class="custom-control-input" value="sd"> 
-        <label for="radio_0" class="custom-control-label">Software Development</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input name="radio" id="radio_1" type="radio" class="custom-control-input" value="dm"> 
-        <label for="radio_1" class="custom-control-label">Digital Marketing</label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label class="col-2">Hobi</label> 
-    <div class="col-8">
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input name="checkbox" id="checkbox_0" type="checkbox" class="custom-control-input" value="a"> 
-        <label for="checkbox_0" class="custom-control-label">Mancing</label>
-      </div>
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input name="checkbox" id="checkbox_1" type="checkbox" class="custom-control-input" value="b"> 
-        <label for="checkbox_1" class="custom-control-label">Olahraga</label>
-      </div>
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input name="checkbox" id="checkbox_2" type="checkbox" class="custom-control-input" value="c"> 
-        <label for="checkbox_2" class="custom-control-label">Membaca</label>
-      </div>
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input name="checkbox" id="checkbox_3" type="checkbox" class="custom-control-input" value="d"> 
-        <label for="checkbox_3" class="custom-control-label">Menonton</label>
-      </div>
-    </div>
-  </div>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label for="select" class="col-2 col-form-label">Mata Kuliah</label> 
-    <div class="col-8">
-      <select id="select" name="select" class="custom-select">
-        <option value="wd">Web Design</option>
-        <option value="DB">Database SQL</option>
-        <option value="php">Pemograman PHP</option>
-        <option value="py">Pemograman Python</option>
-      </select>
-    </div>
-  </div>
-  <div class="form-group row" style="padding-left: 5%;">
-    <label for="textarea" class="col-2 col-form-label">Alamat</label> 
-    <div class="col-8">
-      <textarea id="textarea" name="textarea" cols="40" rows="5" class="form-control"></textarea>
-    </div>
-  </div> 
-  <div class="form-group row" style="padding-left: 5%;">
-    <div class="offset-4 col-8">
-      <button name="submit" type="submit" class="btn btn-primary">Submit</button>
-    </div>
-  </div>
-</form>
+</div>
+
+<script>
+  // Theme Switching Logic
+  const root = document.documentElement;
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeText = document.getElementById('themeText');
+
+  // Check saved theme or system preference
+  const savedTheme = localStorage.getItem('mahasantri_theme') || 'dark';
+  applyTheme(savedTheme);
+
+  function applyTheme(theme) {
+    root.setAttribute('data-theme', theme);
+    localStorage.setItem('mahasantri_theme', theme);
+
+    if (theme === 'dark') {
+      themeIcon.className = 'fa fa-sun-o theme-icon';
+      themeText.textContent = 'Tema Terang';
+    } else {
+      themeIcon.className = 'fa fa-moon-o theme-icon';
+      themeText.textContent = 'Tema Gelap';
+    }
+  }
+
+  themeToggleBtn.addEventListener('click', () => {
+    const currentTheme = root.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    applyTheme(newTheme);
+  });
+
+  // Progress Bar & Character Counter Logic
+  const form = document.getElementById('biodataForm');
+  const inputNama = document.getElementById('nama');
+  const inputNim = document.getElementById('nim');
+  const inputEmail = document.getElementById('email');
+  const selectMatkul = document.getElementById('matakuliah');
+  const textAlamat = document.getElementById('alamat');
+  const progressBar = document.getElementById('progressBar');
+  const progressPct = document.getElementById('progressPct');
+  const charCounter = document.getElementById('charCounter');
+  const resetBtn = document.getElementById('resetBtn');
+
+  function calculateProgress() {
+    let completed = 0;
+    const requiredItems = 5; // Nama, NIM, Email, Jurusan, Matkul
+
+    if (inputNama.value.trim().length > 0) completed++;
+    if (inputNim.value.trim().length > 0) completed++;
+    if (inputEmail.value.trim().length > 0) completed++;
+    if (document.querySelector('input[name="jurusan"]:checked')) completed++;
+    if (selectMatkul.value !== '') completed++;
+
+    const percent = Math.round((completed / requiredItems) * 100);
+    progressBar.style.width = percent + '%';
+    progressPct.textContent = percent + '%';
+
+    charCounter.textContent = `${textAlamat.value.length}/200`;
+  }
+
+  form.addEventListener('input', calculateProgress);
+  form.addEventListener('change', calculateProgress);
+
+  resetBtn.addEventListener('click', () => {
+    setTimeout(() => {
+      calculateProgress();
+    }, 50);
+  });
+
+  // Submit Handler with Toast
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    if (!inputNama.value.trim() || !inputNim.value.trim() || !inputEmail.value.trim()) {
+      alert("Mohon lengkapi kolom yang wajib diisi!");
+      return;
+    }
+
+    const toast = document.getElementById('toastNotification');
+    const toastDesc = document.getElementById('toastDesc');
+    toastDesc.textContent = `Biodata ${inputNama.value.trim()} telah berhasil disimpan ke database.`;
+    toast.style.display = 'flex';
+
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 4000);
+  });
+</script>
+
 </body>
 </html>
