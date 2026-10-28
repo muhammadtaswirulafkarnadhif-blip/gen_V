@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulir Peminjaman Buku Perpustakaan</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Google Fonts: Poppins & Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Palette: Hitam pekat, abu-abu bertingkat, aksen putih/monokrom energik */
+      --bg-body: #0d0f12;
+      --card-bg: #161a1f;
+      --card-border: #2b323c;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --input-bg: #1f242c;
+      --input-border: #333d4b;
+      --input-focus: #ffffff;
+      --input-text: #ffffff;
+      --addon-bg: #272f3a;
+      --addon-text: #e2e8f0;
+      --btn-bg: #ffffff;
+      --btn-text: #0b0d10;
+      --btn-hover: #e2e8f0;
+      --badge-bg: #222933;
+      --badge-text: #cbd5e1;
+      --glow-color: rgba(255, 255, 255, 0.08);
+      --radio-active: #ffffff;
+    }
+
+    [data-theme="light"] {
+      --bg-body: #eef1f5;
+      --card-bg: #ffffff;
+      --card-border: #d3d8df;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --input-bg: #f8fafc;
+      --input-border: #cbd5e1;
+      --input-focus: #0f172a;
+      --input-text: #0f172a;
+      --addon-bg: #e2e8f0;
+      --addon-text: #1e293b;
+      --btn-bg: #0f172a;
+      --btn-text: #ffffff;
+      --btn-hover: #273449;
+      --badge-bg: #f1f5f9;
+      --badge-text: #334155;
+      --glow-color: rgba(15, 23, 42, 0.05);
+      --radio-active: #0f172a;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .form-wrapper {
+      width: 100%;
+      max-width: 620px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 30px 28px;
+      box-shadow: 0 15px 35px var(--glow-color), 0 3px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    /* Energik top-border strip */
+    .form-wrapper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #555c68, #ffffff, #64748b, #ffffff);
+      background-size: 200% 100%;
+      animation: energicShine 4s linear infinite;
+    }
+
+    @keyframes energicShine {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .header-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px dashed var(--card-border);
+    }
+
+    .title-box h2 {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      color: var(--text-main);
+    }
+
+    .title-box p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 0;
+      font-weight: 500;
+    }
+
+    /* Theme Toggle Switch */
+    .theme-switch-btn {
+      background: var(--badge-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 30px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      outline: none !important;
+      transition: all 0.2s ease;
+    }
+
+    .theme-switch-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      border-color: var(--text-muted);
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label-custom {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      padding-top: 6px;
+      margin-bottom: 4px;
+    }
+
+    .form-control, .custom-select {
+      background-color: var(--input-bg);
+      border: 1px solid var(--input-border);
+      color: var(--input-text);
+      font-size: 0.88rem;
+      border-radius: 8px;
+      height: 42px;
+      transition: all 0.2s ease;
+    }
+
+    .form-control:focus, .custom-select:focus {
+      background-color: var(--input-bg);
+      border-color: var(--text-main);
+      box-shadow: 0 0 0 2px var(--glow-color);
+      color: var(--input-text);
+    }
+
+    .input-group-text {
+      background-color: var(--addon-bg);
+      border: 1px solid var(--input-border);
+      color: var(--addon-text);
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+      font-size: 0.85rem;
+      padding: 0 14px;
+    }
+
+    .input-group > .form-control {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    textarea.form-control {
+      height: auto;
+      resize: vertical;
+      min-height: 75px;
+    }
+
+    /* Modern Option Badges for Radio & Checkbox */
+    .option-group-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      min-height: 40px;
+    }
+
+    .custom-control-label {
+      font-size: 0.84rem;
+      font-weight: 500;
+      color: var(--text-main);
+      cursor: pointer;
+      user-select: none;
+      padding-top: 1px;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: var(--radio-active);
+      border-color: var(--radio-active);
+    }
+
+    [data-theme="dark"] .custom-control-input:checked ~ .custom-control-label::after {
+      filter: invert(1);
+    }
+
+    /* Energik Submit Button */
+    .btn-submit {
+      background-color: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.4px;
+      padding: 11px 26px;
+      border-radius: 8px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+    }
+
+    .btn-submit:hover {
+      background-color: var(--btn-hover);
+      color: var(--btn-text);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    /* Alert / Notification box */
+    .status-toast {
+      display: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      margin-top: 14px;
+      background: var(--badge-bg);
+      border-left: 4px solid var(--text-main);
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body data-theme="dark">
+
+<div class="form-wrapper">
+  <!-- Header & Theme Toggle -->
+  <div class="header-section">
+    <div class="title-box">
+      <h2>Peminjaman Buku</h2>
+      <p>Sistem Sirkulasi Perpustakaan Kampus</p>
+    </div>
+    <button type="button" id="toggleTheme" class="theme-switch-btn" title="Ganti Mode Gelap/Terang">
+      <i class="fas fa-sun" id="themeIcon"></i>
+      <span id="themeLabel">Light</span>
+    </button>
+  </div>
+
+  <form id="loanForm" onsubmit="handleFormSubmit(event)">
+    <!-- Nama Lengkap -->
+    <div class="form-group row align-items-center">
+      <label for="text" class="col-sm-4 form-label-custom">Nama Lengkap</label> 
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-id-badge"></i></span>
+          </div> 
+          <input id="text" name="text" type="text" placeholder="Masukkan nama peminjam" class="form-control" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- NIM -->
+    <div class="form-group row align-items-center">
+      <label for="text1" class="col-sm-4 form-label-custom">NIM</label> 
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+          </div> 
+          <input id="text1" name="text1" type="text" placeholder="Nomor Induk Mahasiswa" class="form-control" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- Jurusan -->
+    <div class="form-group row align-items-center">
+      <label for="text2" class="col-sm-4 form-label-custom">Jurusan</label> 
+      <div class="col-sm-8">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-graduation-cap"></i></span>
+          </div> 
+          <input id="text2" name="text2" type="text" placeholder="Program Studi / Jurusan" class="form-control" required>
+        </div>
+      </div>
+    </div>
+
+    <!-- Judul Buku -->
+    <div class="form-group row align-items-center">
+      <label for="select" class="col-sm-4 form-label-custom">Judul Buku</label> 
+      <div class="col-sm-8">
+        <select id="select" name="select" class="custom-select">
+          <option value="ttr">Tutorial 10m dalam 1tahun</option>
+          <option value="ss">Sukses di umur 12thn</option>
+          <option value="rk">Ryo kintaro sukses muda</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Batas Pengembalian -->
+    <div class="form-group row align-items-center">
+      <label class="col-sm-4 form-label-custom pt-0">Batas Waktu</label> 
+      <div class="col-sm-8">
+        <div class="option-group-wrapper">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input name="radio" id="radio_0" type="radio" class="custom-control-input" value="1hari" checked> 
+            <label for="radio_0" class="custom-control-label">1 Hari</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input name="radio" id="radio_1" type="radio" class="custom-control-input" value="2hari"> 
+            <label for="radio_1" class="custom-control-label">2 Hari</label>
+          </div>
+          <div class="custom-control custom-radio custom-control-inline">
+            <input name="radio" id="radio_2" type="radio" class="custom-control-input" value="maks3hari"> 
+            <label for="radio_2" class="custom-control-label">Maks 3 Hari</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kondisi Buku -->
+    <div class="form-group row align-items-center">
+      <label class="col-sm-4 form-label-custom pt-0">Kondisi Buku</label> 
+      <div class="col-sm-8">
+        <div class="option-group-wrapper">
+          <div class="custom-control custom-checkbox custom-control-inline">
+            <input name="checkbox" id="checkbox_0" type="checkbox" class="custom-control-input" value="baik" checked> 
+            <label for="checkbox_0" class="custom-control-label">Baik</label>
+          </div>
+          <div class="custom-control custom-checkbox custom-control-inline">
+            <input name="checkbox" id="checkbox_1" type="checkbox" class="custom-control-input" value="rusak"> 
+            <label for="checkbox_1" class="custom-control-label">Rusak</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pesan & Kesan -->
+    <div class="form-group row">
+      <label for="textarea" class="col-sm-4 form-label-custom pt-2">Pesan &amp; Kesan</label> 
+      <div class="col-sm-8">
+        <textarea id="textarea" name="textarea" cols="40" rows="3" placeholder="Tuliskan catatan kondisi atau pesan..." class="form-control"></textarea>
+      </div>
+    </div> 
+
+    <!-- Submit Button -->
+    <div class="form-group row mb-0 mt-3">
+      <div class="offset-sm-4 col-sm-8">
+        <button name="submit" type="submit" class="btn btn-submit">
+          <i class="fas fa-paper-plane mr-2"></i>SUBMIT DATA
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Notification Banner -->
+  <div id="statusToast" class="status-toast">
+    <i class="fas fa-check-circle mr-1"></i> Data formulir peminjaman berhasil diproses!
+  </div>
+</div>
+
+<script>
+  // Logika toggle Tema Gelap / Terang
+  const toggleBtn = document.getElementById('toggleTheme');
+  const body = document.body;
+  const themeIcon = document.getElementById('themeIcon');
+  const themeLabel = document.getElementById('themeLabel');
+
+  toggleBtn.addEventListener('click', () => {
+    const currentTheme = body.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+    
+    body.setAttribute('data-theme', newTheme);
+    
+    if (newTheme === 'light') {
+      themeIcon.className = 'fas fa-moon';
+      themeLabel.textContent = 'Dark';
+    } else {
+      themeIcon.className = 'fas fa-sun';
+      themeLabel.textContent = 'Light';
+    }
+  });
+
+  // Feedback form submit
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const toast = document.getElementById('statusToast');
+    toast.style.display = 'block';
+    setTimeout(() => {
+      toast.style.display = 'none';
+    }, 4000);
+  }
+</script>
+
+</body>
+</html>
