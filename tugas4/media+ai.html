@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media dan Layout</title>
+    <link rel="icon" type="image/x-icon" href="assets/Logo PeTIK.jpeg">
+    <!-- Font Inter & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* Light Mode Tokens */
+            --bg-body: #f4f4f5;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --border-card: rgba(0, 0, 0, 0.08);
+            --text-main: #18181b;
+            --text-muted: #71717a;
+            --badge-bg: #e4e4e7;
+            --toggle-bg: #e4e4e7;
+            --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+        }
+
+        [data-theme="dark"] {
+            /* Dark Mode Tokens */
+            --bg-body: #09090b;
+            --bg-card: rgba(24, 24, 27, 0.7);
+            --border-card: rgba(255, 255, 255, 0.1);
+            --text-main: #fafafa;
+            --text-muted: #a1a1aa;
+            --badge-bg: #27272a;
+            --toggle-bg: #27272a;
+            --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 680px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Header & Switch */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 8px;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .theme-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--toggle-bg);
+            border: 1px solid var(--border-card);
+            border-radius: 9999px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: transform 0.15s ease, opacity 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            opacity: 0.9;
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.96);
+        }
+
+        /* Media Card */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: var(--badge-bg);
+            color: var(--text-main);
+        }
+
+        .card-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        /* Media Elements Styling */
+        .image-wrapper {
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--border-card);
+            background: var(--badge-bg);
+            max-height: 340px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        audio {
+            width: 100%;
+            border-radius: 30px;
+            outline: none;
+        }
+
+        .video-wrapper {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            border: 1px solid var(--border-card);
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+        }
+
+        .iframe-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+        }
+
+        .iframe-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .meta-description {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header & Dark/Light Mode Button -->
+        <header>
+            <div>
+                <h1>Media & Showcase</h1>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 2px;">Koleksi galeri audio visual</p>
+            </div>
+            <button class="theme-toggle" id="themeBtn" onclick="toggleTheme()">
+                <i data-lucide="moon" id="themeIcon" style="width: 16px; height: 16px;"></i>
+                <span id="themeLabel">Dark</span>
+            </button>
+        </header>
+
+        <!-- 1. Tag Image -->
+        <section class="card">
+            <div class="card-header">
+                <div class="badge-icon"><i data-lucide="image" style="width: 18px; height: 18px;"></i></div>
+                <h3>MBG</h3>
+            </div>
+            <div class="image-wrapper">
+                <img src="assets/Park Eun Bin.jpg" alt="Park Eun Bin">
+            </div>
+        </section>
+
+        <!-- 2. Tag Audio -->
+        <section class="card">
+            <div class="card-header">
+                <div class="badge-icon"><i data-lucide="music" style="width: 18px; height: 18px;"></i></div>
+                <h3>Part Audio</h3>
+            </div>
+            <audio controls>
+                <source src="assets/ssstik.io_1793236941360.mp3" type="audio/mpeg">
+                Browser Anda tidak mendukung elemen audio.
+            </audio>
+        </section>
+
+        <!-- 3. Tag Video -->
+        <section class="card">
+            <div class="card-header">
+                <div class="badge-icon"><i data-lucide="clapperboard" style="width: 18px; height: 18px;"></i></div>
+                <h3>Cinematic Cut</h3>
+            </div>
+            <div class="video-wrapper">
+                <video controls>
+                    <source src="assets/cinematic.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+        </section>
+
+        <!-- 4. Tag Embed / Iframe -->
+        <section class="card">
+            <div class="card-header">
+                <div class="badge-icon"><i data-lucide="play-square" style="width: 18px; height: 18px;"></i></div>
+                <div>
+                    <h3>Can This Love Be Translated</h3>
+                    <p class="meta-description">🎵 About You — The 1975</p>
+                </div>
+            </div>
+            <div class="iframe-wrapper">
+                <iframe src="https://www.youtube.com/embed/a2zZzAr1e_c?si=vLXalqJA7BBb9kOa" 
+                        title="YouTube video player" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                        referrerpolicy="strict-origin-when-cross-origin" 
+                        allowfullscreen></iframe>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Inisialisasi ikon Lucide
+        lucide.createIcons();
+
+        // Fitur Dark / Light Mode dengan penyimpanan di LocalStorage
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        updateToggleBtn(currentTheme);
+
+        function toggleTheme() {
+            const activeTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleBtn(newTheme);
+        }
+
+        function updateToggleBtn(theme) {
+            const label = document.getElementById('themeLabel');
+            const icon = document.getElementById('themeIcon');
+            
+            if (theme === 'dark') {
+                label.textContent = 'Light';
+                icon.setAttribute('data-lucide', 'sun');
+            } else {
+                label.textContent = 'Dark';
+                icon.setAttribute('data-lucide', 'moon');
+            }
+            lucide.createIcons();
+        }
+    </script>
+</body>
+</html>
