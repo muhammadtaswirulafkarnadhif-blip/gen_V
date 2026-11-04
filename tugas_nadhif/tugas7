@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeTIK Jombang - Vokasi TIK & Kepesantrenan</title>
+    <!-- Google Font: Poppins & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            /* ULTRA-BRIGHT VIVID LIGHT THEME */
+            --primary-blue: #0077b6;
+            --primary-teal: #00b4d8;
+            --primary-cyan: #00f0ff;
+            --primary-dark: #004777;
+            --vibrant-yellow: #ffee00;
+            --accent-amber: #f59e0b;
+            --warm-yellow-grad: linear-gradient(165deg, #fff740 0%, #ffdf00 50%, #facc15 100%);
+            --header-grad: linear-gradient(135deg, #0099cc 0%, #00b4d8 50%, #06d6a0 100%);
+            --footer-grad: linear-gradient(135deg, #0077b6 0%, #0096c7 70%, #00b4d8 100%);
+            --bg-page: #e6f6ff;
+            --bg-dots-1: rgba(0, 180, 216, 0.18);
+            --bg-dots-2: rgba(255, 215, 0, 0.22);
+            --card-white: #ffffff;
+            --text-dark: #0f172a;
+            --text-muted: #334155;
+            --side-text: #1c1917;
+            --card-subtle-bg: #f8fafc;
+            --card-border: #e2e8f0;
+            --side-card-bg: #ffffff;
+            --side-card-border: rgba(255, 255, 255, 0.8);
+            --side-nav-bg: rgba(255, 255, 255, 0.88);
+            --side-nav-hover: #ffffff;
+            --side-nav-text: #1c1917;
+            --pesantren-bg: linear-gradient(135deg, #e6fffa 0%, #f0fdf4 100%);
+            --pesantren-border: #10b981;
+            --pesantren-title: #047857;
+            --pesantren-text: #064e3b;
+            --tag-bg: #ffffff;
+            --tag-border: #6ee7b7;
+            --tag-text: #047857;
+            --badge-pill-bg: #e0f2fe;
+            --badge-pill-text: #0284c7;
+            --radius-xl: 24px;
+            --radius-md: 14px;
+            --glow-accent: rgba(0, 240, 255, 0.4);
+            --shadow-card: 0 25px 60px -15px rgba(0, 119, 182, 0.22), 0 0 0 1px rgba(0, 180, 216, 0.2);
+        }
+
+        /* SLEEK MONOCHROME DARK THEME (HITAM, ABU-ABU & PUTIH) */
+        body.dark-mode {
+            --primary-blue: #ffffff;
+            --primary-teal: #e2e8f0;
+            --primary-cyan: #f8fafc;
+            --primary-dark: #0a0a0a;
+            --vibrant-yellow: #f1f5f9;
+            --accent-amber: #94a3b8;
+            --warm-yellow-grad: linear-gradient(165deg, #18181b 0%, #141417 60%, #0f0f11 100%);
+            --header-grad: linear-gradient(135deg, #121214 0%, #1c1c21 50%, #27272e 100%);
+            --footer-grad: linear-gradient(135deg, #101012 0%, #17171b 70%, #222228 100%);
+            --bg-page: #0a0a0c;
+            --bg-dots-1: rgba(255, 255, 255, 0.08);
+            --bg-dots-2: rgba(200, 200, 200, 0.05);
+            --card-white: #121215;
+            --text-dark: #ffffff;
+            --text-muted: #d4d4d8;
+            --side-text: #f4f4f5;
+            --card-subtle-bg: #1c1c21;
+            --card-border: #33333b;
+            --side-card-bg: #18181d;
+            --side-card-border: rgba(255, 255, 255, 0.16);
+            --side-nav-bg: rgba(30, 30, 36, 0.9);
+            --side-nav-hover: #272730;
+            --side-nav-text: #ffffff;
+            --pesantren-bg: linear-gradient(135deg, #18181d 0%, #1f1f26 100%);
+            --pesantren-border: #52525e;
+            --pesantren-title: #ffffff;
+            --pesantren-text: #e4e4e7;
+            --tag-bg: #22222a;
+            --tag-border: #444450;
+            --tag-text: #f4f4f5;
+            --badge-pill-bg: #272730;
+            --badge-pill-text: #ffffff;
+            --glow-accent: rgba(255, 255, 255, 0.35);
+            --shadow-card: 0 25px 60px -10px rgba(0, 0, 0, 0.95), 0 0 25px rgba(255, 255, 255, 0.05), 0 0 0 1px rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background 0.35s ease, background-color 0.35s ease, border-color 0.35s ease, color 0.25s ease, box-shadow 0.35s ease;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-page);
+            background-image: radial-gradient(var(--bg-dots-1) 1.5px, transparent 1.5px), radial-gradient(var(--bg-dots-2) 1.5px, transparent 1.5px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding: 20px 14px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        /* Container Frame Utama */
+        .page-wrapper {
+            width: 100%;
+            max-width: 1240px;
+            background: var(--card-white);
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-card);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* HEADER / NAVBAR */
+        .main-header {
+            background: var(--header-grad);
+            padding: 16px 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #ffffff;
+            position: relative;
+            z-index: 40;
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.25);
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            color: #ffffff;
+            transition: transform 0.25s ease;
+        }
+
+        .brand-container:hover {
+            transform: scale(1.03);
+        }
+
+        .infinity-logo-wrapper {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(8px);
+            border: 2px solid rgba(255, 255, 255, 0.35);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .infinity-logo-wrapper i {
+            font-size: 26px;
+            color: #ffffff;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+            animation: pulseSoft 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseSoft {
+            0% { transform: scale(0.96); }
+            100% { transform: scale(1.08) rotate(3deg); }
+        }
+
+        .brand-text h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+
+        .brand-text p {
+            font-size: 11px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            letter-spacing: 0.4px;
+        }
+
+        /* Nav Links */
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .desktop-nav a {
+            color: rgba(255, 255, 255, 0.92);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 10px;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+
+        .desktop-nav a:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .desktop-nav a.nav-cta {
+            background: #ffffff;
+            color: var(--primary-blue);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        }
+
+        .desktop-nav a.nav-cta:hover {
+            background: var(--vibrant-yellow);
+            color: #111827;
+            box-shadow: 0 6px 18px rgba(255, 217, 0, 0.4);
+        }
+
+        /* THEME TOGGLE BUTTON */
+        .theme-toggle-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1.5px solid rgba(255, 255, 255, 0.45);
+            color: #ffffff;
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 19px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .theme-toggle-btn:hover {
+            background: #ffffff;
+            color: #0284c7;
+            transform: scale(1.12);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+        }
+
+        body.dark-mode .theme-toggle-btn {
+            background: linear-gradient(135deg, #27272e, #18181b);
+            color: #ffffff;
+            border-color: #52525e;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+        }
+
+        body.dark-mode .theme-toggle-btn:hover {
+            transform: scale(1.12) rotate(20deg);
+            background: #ffffff;
+            color: #09090b;
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        /* Mobile Hamburger Button */
+        .hamburger-btn {
+            display: none;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-size: 20px;
+            padding: 8px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .hamburger-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Mobile Dropdown Nav */
+        .mobile-nav-panel {
+            display: none;
+            flex-direction: column;
+            background: var(--primary-dark);
+            padding: 16px 24px;
+            gap: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .mobile-nav-panel.open {
+            display: flex;
+        }
+
+        .mobile-nav-panel a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .mobile-nav-panel a:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* MAIN BODY LAYOUT (3 Columns: Left Sidebar, Main Content, Right Sidebar) */
+        .body-layout {
+            display: grid;
+            grid-template-columns: 240px 1fr 200px;
+            background: #ffffff;
+            min-height: 580px;
+        }
+
+        /* SIDEBAR KUNING (Kiri & Kanan) */
+        .side-panel {
+            background: var(--warm-yellow-grad);
+            padding: 30px 18px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: inset 0 0 40px rgba(245, 158, 11, 0.15);
+        }
+
+        /* Left Sidebar: Interactive Android Ad Card */
+        .side-left {
+            align-items: center;
+            border-right: 2px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .ad-widget {
+            background: var(--side-card-bg);
+            width: 100%;
+            border-radius: 18px;
+            padding: 22px 14px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            border: 1px solid var(--side-card-border);
+            box-shadow: 0 14px 28px rgba(180, 115, 0, 0.18);
+            position: sticky;
+            top: 24px;
+            transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        body.dark-mode .ad-widget {
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.8), 0 0 15px rgba(255, 255, 255, 0.04);
+        }
+
+        .ad-widget:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 38px rgba(180, 115, 0, 0.28);
+        }
+
+        body.dark-mode .ad-widget:hover {
+            box-shadow: 0 20px 38px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 255, 255, 0.12);
+        }
+
+        /* Animasi Device & Orbit Elements */
+        .device-stage {
+            position: relative;
+            width: 110px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .phone-body {
+            width: 74px;
+            height: 108px;
+            background: linear-gradient(145deg, #1e293b, #0f172a);
+            border-radius: 16px;
+            border: 3px solid #38bdf8;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 6px;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, #0284c7 0%, #38bdf8 100%);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            position: relative;
+        }
+
+        .phone-screen i.main-android-icon {
+            font-size: 32px;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+            animation: bounceSoft 2.4s ease-in-out infinite;
+        }
+
+        @keyframes bounceSoft {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Floating App Badges */
+        .bubble-badge {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+            font-size: 14px;
+            z-index: 3;
+            animation: floatOrb 3s ease-in-out infinite alternate;
+        }
+
+        .badge-msg {
+            top: 6px;
+            left: -4px;
+            color: #e11d48;
+            background: #ffe4e6;
+            animation-delay: 0.2s;
+        }
+
+        .badge-code {
+            bottom: 6px;
+            left: 2px;
+            color: #059669;
+            background: #d1fae5;
+            animation-delay: 0.8s;
+        }
+
+        .badge-cam {
+            top: 14px;
+            right: -4px;
+            color: #ea580c;
+            background: #ffedd5;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(0.95); }
+            100% { transform: translate(4px, -6px) scale(1.08); }
+        }
+
+        .ad-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 4px;
+        }
+
+        .ad-subtitle {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-bottom: 14px;
+            line-height: 1.3;
+        }
+
+        .btn-ad-action {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            width: 100%;
+            padding: 8px 12px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3);
+        }
+
+        .btn-ad-action:hover {
+            background: linear-gradient(135deg, #0369a1, #075985);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(2, 132, 199, 0.4);
+        }
+
+        /* KOLOM UTAMA (CONTENT AREA) */
+        .content-area {
+            padding: 38px 44px;
+            background: var(--card-white);
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        .hero-headline {
+            border-bottom: 2px solid var(--card-border);
+            padding-bottom: 18px;
+            position: relative;
+        }
+
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--badge-pill-bg);
+            color: var(--badge-pill-text);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+        }
+
+        .hero-headline h2 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.5px;
+            line-height: 1.25;
+        }
+
+        .hero-headline h2 span {
+            background: linear-gradient(120deg, var(--primary-teal), var(--primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .lead-text {
+            font-size: 15px;
+            line-height: 1.8;
+            color: var(--text-dark);
+            font-weight: 500;
+            background: var(--card-subtle-bg);
+            border-left: 4px solid var(--primary-teal);
+            padding: 14px 18px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .editorial-text {
+            font-size: 14.5px;
+            line-height: 1.85;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        /* Jurusan Highlight Cards */
+        .curriculum-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 10px 0;
+        }
+
+        .major-card {
+            background: var(--card-subtle-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 18px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .major-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-teal);
+            box-shadow: 0 10px 22px rgba(0, 180, 216, 0.12);
+            background: var(--card-white);
+        }
+
+        .major-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .card-ppl::before { background: #0284c7; }
+        .card-dm::before { background: #f59e0b; }
+
+        body.dark-mode .card-ppl::before { background: #e4e4e7; }
+        body.dark-mode .card-dm::before { background: #a1a1aa; }
+
+        .major-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .major-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        .card-ppl .major-icon { background: #e0f2fe; color: #0284c7; }
+        .card-dm .major-icon { background: #fef3c7; color: #d97706; }
+
+        body.dark-mode .card-ppl .major-icon { background: #272730; color: #ffffff; }
+        body.dark-mode .card-dm .major-icon { background: #272730; color: #e4e4e7; }
+
+        .major-header h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-dark);
+        }
+
+        .major-card p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-muted);
+        }
+
+        /* Pesantren Section Highlight */
+        .pesantren-box {
+            background: var(--pesantren-bg);
+            border: 1px dashed var(--pesantren-border);
+            border-radius: 16px;
+            padding: 18px 20px;
+        }
+
+        .pesantren-box h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--pesantren-title);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pesantren-box p {
+            color: var(--pesantren-text) !important;
+        }
+
+        .kitab-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+        }
+
+        .kitab-tag {
+            background: var(--tag-bg);
+            border: 1px solid var(--tag-border);
+            color: var(--tag-text);
+            font-size: 11.5px;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+            transition: all 0.2s;
+        }
+
+        .kitab-tag:hover {
+            background: #10b981;
+            color: #ffffff;
+            border-color: #10b981;
+            transform: scale(1.04);
+        }
+
+        /* SIDEBAR KANAN: Navigasi Cepat */
+        .side-right {
+            align-items: stretch;
+            border-left: 2px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .sidebar-menu-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            color: var(--side-text);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .nav-vertical {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            position: sticky;
+            top: 24px;
+        }
+
+        .nav-vertical li a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--side-nav-bg);
+            color: var(--side-nav-text);
+            text-decoration: none;
+            padding: 12px 16px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-bottom: 2px solid rgba(0, 0, 0, 0.15);
+            transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+            backdrop-filter: blur(8px);
+        }
+
+        body.dark-mode .nav-vertical li a {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.28);
+        }
+
+        .nav-vertical li a:hover {
+            background: var(--side-nav-hover);
+            color: var(--primary-blue);
+            transform: translateX(-4px) scale(1.03);
+            box-shadow: 0 8px 18px rgba(180, 115, 0, 0.25);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        body.dark-mode .nav-vertical li a:hover {
+            color: #ffffff;
+            background: #272730;
+            border-color: #71717a;
+            border-bottom-color: #ffffff;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.85), 0 0 14px rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-vertical li a i.arrow {
+            font-size: 11px;
+            opacity: 0.5;
+            transition: transform 0.25s, opacity 0.25s;
+        }
+
+        .nav-vertical li a:hover {
+            background: var(--side-nav-hover);
+            color: var(--primary-blue);
+            transform: translateX(-4px) scale(1.03);
+            box-shadow: 0 8px 18px rgba(180, 115, 0, 0.2);
+            border-bottom-color: var(--primary-blue);
+        }
+
+        body.dark-mode .nav-vertical li a:hover {
+            color: var(--vibrant-yellow);
+            border-bottom-color: var(--vibrant-yellow);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-vertical li a:hover i.arrow {
+            opacity: 1;
+            transform: translateX(4px);
+        }
+
+        /* Action Card di Sidebar Kanan */
+        .register-callout {
+            margin-top: 24px;
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-radius: 14px;
+            padding: 16px 12px;
+            color: #ffffff;
+            text-align: center;
+            box-shadow: 0 8px 18px rgba(2, 132, 199, 0.28);
+        }
+
+        .register-callout h5 {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .register-callout p {
+            font-size: 11px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .btn-register-mini {
+            display: block;
+            background: var(--vibrant-yellow);
+            color: #1e293b;
+            font-size: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-register-mini:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        /* FOOTER */
+        .main-footer {
+            background: var(--footer-grad);
+            color: #ffffff;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .footer-copyright {
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-socials {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .footer-socials a {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.15);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        }
+
+        .footer-socials a:hover {
+            background: #ffffff;
+            color: var(--primary-blue);
+            transform: translateY(-3px) rotate(6deg);
+        }
+
+        /* RESPONSIVE BREAKPOINTS */
+        @media (max-width: 1080px) {
+            .body-layout {
+                grid-template-columns: 210px 1fr 180px;
+            }
+            .content-area {
+                padding: 30px 24px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .body-layout {
+                grid-template-columns: 1fr;
+            }
+            .side-panel {
+                padding: 24px 20px;
+            }
+            .side-left {
+                order: 2;
+                border-right: none;
+                border-top: 2px solid rgba(0, 0, 0, 0.05);
+            }
+            .content-area {
+                order: 1;
+                padding: 30px 20px;
+            }
+            .side-right {
+                order: 3;
+                border-left: none;
+                border-top: 2px solid rgba(0, 0, 0, 0.05);
+            }
+            .curriculum-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-vertical {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 8px 6px;
+            }
+            .main-header {
+                padding: 14px 18px;
+            }
+            .desktop-nav {
+                display: none;
+            }
+            .hamburger-btn {
+                display: block;
+            }
+            .hero-headline h2 {
+                font-size: 22px;
+            }
+            .content-area {
+                padding: 24px 16px;
+            }
+            .main-footer {
+                flex-direction: column;
+                text-align: center;
+                justify-content: center;
+                gap: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page-wrapper">
+        <!-- HEADER DENGAN INFINITY LOGO & NAVBAR -->
+        <header class="main-header">
+            <a href="#" class="brand-container" title="PeTIK Jombang">
+                <div class="infinity-logo-wrapper">
+                    <i class="fa-solid fa-infinity"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>PeTIK Jombang</h1>
+                    <p>Pesantren Teknologi Informasi & Komunikasi</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigasi -->
+            <ul class="desktop-nav">
+                <li><a href="#about"><i class="fa-solid fa-circle-info" style="margin-right:6px; font-size:13px;"></i>About</a></li>
+                <li><a href="#blog"><i class="fa-solid fa-newspaper" style="margin-right:6px; font-size:13px;"></i>Blog</a></li>
+                <li><a href="#shop"><i class="fa-solid fa-store" style="margin-right:6px; font-size:13px;"></i>Shop</a></li>
+                <li><a href="#contact" class="nav-cta"><i class="fa-solid fa-paper-plane" style="margin-right:6px; font-size:13px;"></i>Contact</a></li>
+            </ul>
+
+            <!-- Header Actions: Dark/Light Mode & Hamburger -->
+            <div class="header-actions">
+                <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Ganti Mode Gelap/Terang" title="Beralih Mode Gelap/Terang">
+                    <i class="fa-solid fa-moon" id="themeIcon"></i>
+                </button>
+                <button class="hamburger-btn" id="mobileMenuBtn" aria-label="Buka Menu">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dropdown Navigasi Khusus Mobile -->
+        <nav class="mobile-nav-panel" id="mobileNavPanel">
+            <a href="#about"><i class="fa-solid fa-circle-info" style="margin-right:8px;"></i>About</a>
+            <a href="#blog"><i class="fa-solid fa-newspaper" style="margin-right:8px;"></i>Blog</a>
+            <a href="#shop"><i class="fa-solid fa-store" style="margin-right:8px;"></i>Shop</a>
+            <a href="#contact"><i class="fa-solid fa-paper-plane" style="margin-right:8px;"></i>Contact</a>
+        </nav>
+
+        <!-- MAIN SECTION: 3 KOLOM DINAMIS -->
+        <div class="body-layout">
+            
+            <!-- SIDEBAR KIRI: Iklan Android Interaktif -->
+            <aside class="side-panel side-left">
+                <div class="ad-widget">
+                    <div class="device-stage">
+                        <div class="phone-body">
+                            <div class="phone-screen">
+                                <i class="fa-brands fa-android main-android-icon"></i>
+                            </div>
+                        </div>
+                        <!-- Floating badges interaktif -->
+                        <div class="bubble-badge badge-msg" title="Notifikasi"><i class="fa-solid fa-comment-dots"></i></div>
+                        <div class="bubble-badge badge-code" title="Coding Mobile"><i class="fa-solid fa-code"></i></div>
+                        <div class="bubble-badge badge-cam" title="Media & Visual"><i class="fa-solid fa-camera"></i></div>
+                    </div>
+                    <div class="ad-title">Iklan Android</div>
+                    <p class="ad-subtitle">Pelajari pembuatan aplikasi mobile dan optimasi teknologi digital secara langsung.</p>
+                    <a href="#pendaftaran" class="btn-ad-action">
+                        <i class="fa-solid fa-rocket"></i> Coba Demo
+                    </a>
+                </div>
+            </aside>
+
+            <!-- KONTEN TENGAH: Artikel Profil PeTIK Jombang -->
+            <main class="content-area">
+                <div class="hero-headline">
+                    <div class="badge-pill">
+                        <i class="fa-solid fa-bolt"></i> Vokasi Unggulan &amp; Pesantren
+                    </div>
+                    <h2>Informasi Seputar <span>PeTIK Jombang</span></h2>
+                </div>
+
+                <div class="lead-text">
+                    <strong>PeTIK Jombang</strong> merupakan lembaga pendidikan vokasi Teknologi Informasi dan Komunikasi dengan dukungan pembelajaran bidang kepesantrenan (Kajian Kitab Kuning) dari ulama-ulama yang memiliki sanad keilmuan yang jelas.
+                </div>
+
+                <p class="editorial-text">
+                    PeTIK Jombang yang merupakan lembaga pendidikan di bawah naungan <strong>Yayasan Baitul Maal (YBM) PLN</strong>, berkomitmen melanjutkan visi dan misi untuk menebarkan manfaat kepada umat seluas-luasnya. Hal ini diwujudkan dengan memberikan kemanfaatan kepada anak-anak dhuafa untuk mengenyam pendidikan teknologi informasi dan komunikasi selama <strong>1 (satu) tahun secara intensif</strong>.
+                </p>
+
+                <!-- 2 Kartu Jurusan Unggulan -->
+                <div class="curriculum-grid">
+                    <div class="major-card card-ppl">
+                        <div class="major-header">
+                            <div class="major-icon"><i class="fa-solid fa-laptop-code"></i></div>
+                            <div>
+                                <h3>PPL</h3>
+                                <small style="color:#0284c7; font-weight:600;">Pengembangan Perangkat Lunak</small>
+                            </div>
+                        </div>
+                        <p>Mahasantri diajarkan pembuatan website modern, aplikasi berbasis web, aplikasi mobile, merancang UI/UX yang intuitif, hingga arsitektur dan manajemen database.</p>
+                    </div>
+
+                    <div class="major-card card-dm">
+                        <div class="major-header">
+                            <div class="major-icon"><i class="fa-solid fa-chart-line"></i></div>
+                            <div>
+                                <h3>DM</h3>
+                                <small style="color:#d97706; font-weight:600;">Digital Marketing</small>
+                            </div>
+                        </div>
+                        <p>Menguasai tool marketing online terkini, beriklan via Instagram, Facebook &amp; TikTok Ads, riset target pasar, serta strategi SEO (Search Engine Optimization) mutakhir.</p>
+                    </div>
+                </div>
+
+                <!-- Kajian Kitab Kuning & Karakter Santri -->
+                <div class="pesantren-box">
+                    <h4><i class="fa-solid fa-book-quran"></i> Penguatan Karakter &amp; Kepesantrenan</h4>
+                    <p style="font-size: 13.5px; color: #064e3b; line-height: 1.6;">
+                        Selain kompetensi digital profesional, para mahasantri dibimbing spiritualnya melalui kajian kitab-kitab berbobot:
+                    </p>
+                    <div class="kitab-tags">
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Hadits Arbain</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Taklim Mutaalim</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Aqidatul Awam (Tauhid)</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Safinatunnajah (Fiqih)</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Fathul Qorib</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Sulam Taufiq (Tasawuf)</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Bidayatul Hidayah</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Tafsir Al Ibris</span>
+                        <span class="kitab-tag"><i class="fa-solid fa-bookmark" style="margin-right:4px;"></i>Nahwu (Jurumiyah)</span>
+                    </div>
+                </div>
+            </main>
+
+            <!-- SIDEBAR KANAN: Navigasi Tautan Cepat -->
+            <aside class="side-panel side-right">
+                <div class="sidebar-menu-title">Navigasi Cepat</div>
+                <ul class="nav-vertical">
+                    <li><a href="#beranda"><span>Beranda</span> <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+                    <li><a href="#article"><span>Article</span> <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+                    <li><a href="#pendaftaran"><span>Pendaftaran</span> <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+                    <li><a href="#galery"><span>Galery</span> <i class="fa-solid fa-arrow-right arrow"></i></a></li>
+                </ul>
+
+                <div class="register-callout">
+                    <i class="fa-solid fa-graduation-cap" style="font-size: 26px; margin-bottom: 6px;"></i>
+                    <h5>Penerimaan Mahasantri</h5>
+                    <p>Beasiswa Penuh 1 Tahun untuk Dhuafa &amp; Berprestasi.</p>
+                    <a href="#pendaftaran" class="btn-register-mini">Daftar Sekarang</a>
+                </div>
+            </aside>
+
+        </div>
+
+        <!-- FOOTER BIRU ENERGIK -->
+        <footer class="main-footer">
+            <div class="footer-copyright">
+                <i class="fa-regular fa-copyright"></i> 2026 Programming PeTIK. All Rights Reserved
+            </div>
+            <div class="footer-socials">
+                <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Script Interaktivitas Ringan -->
+    <script>
+        // Fitur Mode Gelap & Terang (Dark / Light Theme Toggle)
+        const themeToggleBtn = document.getElementById('themeToggleBtn');
+        const themeIcon = document.getElementById('themeIcon');
+        const currentTheme = localStorage.getItem('petik_theme');
+
+        function setTheme(isDark) {
+            if (isDark) {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('petik_theme', 'dark');
+            } else {
+                document.body.classList.remove('dark-mode');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('petik_theme', 'light');
+            }
+        }
+
+        // Cek preferensi sebelumnya atau sistem
+        if (currentTheme === 'dark' || (!currentTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            setTheme(true);
+        } else {
+            setTheme(false);
+        }
+
+        if (themeToggleBtn) {
+            themeToggleBtn.addEventListener('click', () => {
+                const isDarkMode = document.body.classList.contains('dark-mode');
+                setTheme(!isDarkMode);
+            });
+        }
+
+        // Toggle Menu Hamburger di Layar Mobile
+        const menuBtn = document.getElementById('mobileMenuBtn');
+        const navPanel = document.getElementById('mobileNavPanel');
+
+        if (menuBtn && navPanel) {
+            menuBtn.addEventListener('click', () => {
+                navPanel.classList.toggle('open');
+                const isOpen = navPanel.classList.contains('open');
+                menuBtn.innerHTML = isOpen ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+            });
+        }
+
+        // Smooth Scroll untuk Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId && targetId !== '#') {
+                    const targetEl = document.querySelector(targetId);
+                    if (targetEl) {
+                        e.preventDefault();
+                        targetEl.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
