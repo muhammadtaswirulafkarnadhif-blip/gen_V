@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #ffffff;
+  padding-top: 130px;
+  padding-bottom: 50px;
+}
+.green-banner-bg {
+  width: 100%;
+  background-color: #7df5cb; /* Warna hijau muda */
+  position: relative;
+}
+.moving-content {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 100%; /* Mulai dari luar batas kanan layar */
+  animation: move-left 12s linear infinite; 
+  position: relative;
+}
+
+.marquee-text {
+  color: #ff0000;
+  font-size: 42px;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px 0;
+}
+.cyan-ball {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  position: absolute;
+  top: -118px; 
+  left: 1200px;
+  animation: roll-ball 4s linear infinite; 
+}
+
+
+.cyan-ball::after {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  width: 15px;
+  height: 15px;
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 50%;
+}
+
+
+@keyframes move-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+
+@keyframes roll-ball {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); } 
+}
+    </style>
+</head>
+<body>
+   <div class="marquee-container">
+  <div class="green-banner-bg">
+    <div class="moving-content">
+      <div class="cyan-ball"></div>
+      <div class="marquee-text">Assalamu'alaikum Selamat Belajar Web Design.</div>
+    </div>
+    
+  </div>
+</div>
+</body>
+</html>
