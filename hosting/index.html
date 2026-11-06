@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Nadhif - Web Developer</title>
+    <style>
+        :root {
+            /* Tema Gelap (Default) */
+            --bg-main: #0d0f12;
+            --bg-nav: rgba(20, 24, 28, 0.75);
+            --bg-panel: rgba(255, 255, 255, 0.03);
+            --text-light: #f8f9fa;
+            --text-muted: #a1a1aa;
+            --accent: #2563eb; /* Biru Kobalt */
+            --shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        body.light-mode {
+            /* Tema Terang */
+            --bg-main: #f0f4f8;
+            --bg-nav: rgba(255, 255, 255, 0.8);
+            --bg-panel: rgba(255, 255, 255, 0.6);
+            --text-light: #1e293b;
+            --text-muted: #64748b;
+            --shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-light);
+            line-height: 1.7;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Navigasi - Diubah menjadi kapsul melayang (Floating Pill) */
+        nav {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            background-color: var(--bg-nav);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 28px;
+            width: fit-content;
+            margin: 0 auto;
+            border-radius: 999px; /* Sangat melengkung */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: background-color 0.5s ease;
+        }
+
+        nav a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s, opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        /* Tombol Tema */
+        #theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            font-size: 1.1rem;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        #theme-toggle:hover {
+            transform: scale(1.15) rotate(15deg);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Tata Letak Konten */
+        .container {
+            max-width: 680px;
+            margin: 40px auto 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        /* Elemen Kartu - Diubah menjadi luwes dan tanpa border tegas */
+        header, section {
+            background: linear-gradient(145deg, var(--bg-panel), transparent);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 40px; /* Lengkungan organik yang besar */
+            box-shadow: var(--shadow);
+            scroll-margin-top: 100px;
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Aksen cahaya halus di belakang header */
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            filter: blur(100px);
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        h1 {
+            margin: 0 0 12px 0;
+            font-size: 2.4rem;
+            letter-spacing: -0.5px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--accent); /* Menggunakan warna aksen langsung agar menyatu */
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin: 8px 0;
+            font-size: 1.05rem;
+        }
+
+        /* Animasi Kursor Mengetik */
+        .typing-container {
+            display: inline-block;
+            min-height: 28px;
+            font-weight: 500;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 2px;
+            background-color: var(--accent);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Tag Keahlian */
+        li {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--accent);
+            padding: 10px 20px;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        li:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+            margin-top: 8px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* Membuat tabel berbentuk melengkung di ujung-ujungnya */
+        th:first-child, td:first-child { border-radius: 20px 0 0 20px; }
+        th:last-child, td:last-child { border-radius: 0 20px 20px 0; }
+
+        th {
+            color: var(--text-light);
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        td {
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px 60px;
+            margin-top: 20px;
+        }
+
+        footer a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background-color: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 999px; /* Tombol berbentuk kapsul */
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        footer a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(37, 99, 235, 0.6);
+        }
+
+        /* Kelas Animasi Fade-In */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(40px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Responsif */
+        @media (max-width: 600px) {
+            nav {
+                width: 90%;
+                gap: 16px;
+                padding: 12px 20px;
+            }
+            .container {
+                padding: 10px 16px;
+            }
+            header, section {
+                padding: 32px 24px;
+                border-radius: 32px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang">Tentang</a>
+        <a href="#keahlian">Keahlian</a>
+        <a href="#pendidikan">Pendidikan</a>
+        <button id="theme-toggle" title="Ganti Tema">☀️</button>
+    </nav>
+
+    <div class="container">
+        <header id="beranda" class="fade-in">
+            <h1>M. Taswirul Afkar Nadhif</h1>
+            <p class="typing-container">
+                <span id="typing-text"></span><span class="cursor">&nbsp;</span>
+            </p>
+        </header>
+
+        <main>
+            <section id="tentang" class="fade-in">
+                <h2>Tentang Saya</h2>
+                <p>Saya adalah seorang pelajar di PeTIK II Jombang, dan saya mengambil jurusan PPL (Pengembangan Perangkat Lunak).</p>
+            </section>
+
+            <section id="keahlian" class="fade-in">
+                <h2>Keahlian</h2>
+                <ul>
+                    <li>HTML Dasar</li>
+                    <li>CSS Dasar</li>
+                    
+                </ul>
+            </section>
+
+            <section id="pendidikan" class="fade-in">
+                <h2>Pendidikan</h2>
+                <table>
+                    <tr>
+                        <th>Tahun</th>
+                        <th>Sekolah</th>
+                    </tr>
+                    <tr>
+                        <td>2023 - 2026</td>
+                        <td>MAS Darul Muawanah</td>
+                    </tr>
+                    <tr>
+                        <td>2026 - Sekarang</td>
+                        <td>PeTIK II Jombang (GEN 5)</td>
+                    </tr>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <footer id="kontak" class="fade-in">
+        <a href="mailto:muhammadtaswirulafkarnadhif@gmail.com">Kirim Email</a>
+    </footer>
+
+    <script>
+        // 1. Script Tema Gelap/Terang
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if (body.classList.contains('light-mode')) {
+                themeToggle.textContent = '🌙'; 
+            } else {
+                themeToggle.textContent = '☀️'; 
+            }
+        });
+
+        // 2. Script Animasi Fade-In on Scroll
+        const faders = document.querySelectorAll('.fade-in');
+        
+        const appearOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('show');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // 3. Script Efek Mesin Ketik (Typing Effect)
+        const textArray = "Pelajar PeTIK II Jombang | Web Developer Pemula";
+        const typingTextElement = document.getElementById("typing-text");
+        let charIndex = 0;
+
+        function type() {
+            if (charIndex < textArray.length) {
+                typingTextElement.textContent += textArray.charAt(charIndex);
+                charIndex++;
+                setTimeout(type, 60);
+            }
+        }
+
+        setTimeout(type, 800);
+    </script>
+</body>
+</html>
