@@ -1,0 +1,20 @@
+//luas Segitiga//
+function hitungLuasSegitiga(alas, tinggi) {
+    let luas = (alas * tinggi) / 2;
+    return luas;
+}
+let nilaiAlas = 10;
+let nilaiTinggi = 8;
+let hasil = hitungLuasSegitiga(nilaiAlas, nilaiTinggi);
+console.log("Luas segitiga dengan alas " + nilaiAlas + " dan tinggi " + nilaiTinggi + " adalah: " + hasil);
+
+//Cetak bilangan genab//
+for (let i = 2; i <= 10; i += 2) {
+    console.log(i);
+}
+console.log("---");
+for (let i = 1; i <= 10; i++) {
+    if (i % 2 === 0) {
+        console.log(i);
+    }
+}
