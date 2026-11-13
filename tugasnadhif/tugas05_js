@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Mencetak Deret Angka Berurutan (foor loop)
+ // Menampilkan angka 1 sampai 10
+    for (let i = 1; i <= 10; i++) {
+      console.log(i);
+    }
+// Menampilkan hitungan mundur 5 sampai 1
+    for (let j = 5; j >= 1; j--) {
+      console.log(j);
+    }
+// Mencetak teks setelah perulangan selesai
+    console.log("mulai");
+
+//Menghitung total akumulasi angka (while loop)
+    let angka = 1;
+    let total = 0;
+    while (angka <= 5) {
+      total += angka;
+         angka++;
+    }
+console.log(total);
+    </script>
+</body>
+</html>
